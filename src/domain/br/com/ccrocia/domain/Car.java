@@ -29,9 +29,11 @@ public class Car {
 	
 	
 	@ManyToMany
-	@JoinColumn(name = "Auto Part id" ,
-	foreignKey = @ForeignKey(name = "fk_auto_parts_car"),
-	referencedColumnName = "id")
+	@JoinTable(
+	    name = "car_auto_part",
+	    joinColumns = @JoinColumn(name = "car_id"),
+	    inverseJoinColumns = @JoinColumn(name = "auto_part_id")
+	)
 	private List<AutoParts> autoParts;
 
 	public Long getId() {
